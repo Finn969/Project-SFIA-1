@@ -45,7 +45,7 @@ My Kanban board on Trello was used to track progress and manage the needed tasks
 
 ### Start Point
 
-[picture of the board](https://github.com/Finn969/Project-SFIA-1/blob/master/Trello%20Board.png)
+![picture of the board](https://github.com/Finn969/Project-SFIA-1/blob/master/Trello%20Board.png)
 
 I followed the set of tasks laid out in the 'Milestones' posted on slack.
 ### Rolling Changes
