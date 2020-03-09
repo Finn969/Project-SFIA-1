@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block head %}
+{{super()}}
+<style>
+h1 {text-align:center;}
+p {margin: 5px 0; padding: 5px; border: 2px solid sandybrown; }
+p {background-color:burlywood; }
+p {font-family: Garamond;}
+</style>
+{% endblock %}
+{%block body%}
+<form method="POST" action="">
+    <p>
+        <H2>Enter details of a Historical Battle </H2> <br>
+        Location<br> <input type = "text" name= "Location" /> <br>
+        Start Date<br> <input type = "date" name = "Start" /> <br>
+        End Date<br>  <input type = "date" name = "End" /> <br>
+        Type (Land or Naval)<br> <input type = "text" name = "Type" /> <br>
+        <input type = "submit">
+    </p>
+    </form>
+    
+    <p>
+        <H2>List of Battles</H2>
+        {% for item in battleinfo %}
+        <tr>
+            <td>{{item[1]}},</td>
+            <td>{{item[2]}},</td>
+            <td>{{item[3]}},</td>
+            <td>{{item[4]}},</td>
+            <br>
+        </tr>
+        {% endfor %}
+    </p>
+    <br>
+    <p>
+        <form action = '/delete/battle' method='POST'>
+            Battle to be deleted<br><input type = "text" name = "RemoveThis" /> <br>
+            <button type = "submit" action = "{{ url_for('delete_commander') }}"/>Delete</button>
+        </form>
+    </p>
+    <br>
+{% endblock %}
