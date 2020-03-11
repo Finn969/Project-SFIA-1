@@ -6,8 +6,8 @@ CREATE TABLE relations (
 	eventID INT(3) NOT NULL AUTO_INCREMENT,
 	generalID INT(3) NOT NULL,
 	battleID INT(3) NOT NULL,
-	PRIMARY KEY(eventID)
-	FOREIGN KEY(generalID) REFERENCES commandersstable(ID)
+	PRIMARY KEY(eventID),
+	FOREIGN KEY(generalID) REFERENCES commandersstable(ID),
 	FOREIGN KEY(battleID) REFERENCES battlestable(ID)
 );
 
