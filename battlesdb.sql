@@ -7,7 +7,7 @@ CREATE TABLE relations (
 	generalID INT(3) NOT NULL,
 	battleID INT(3) NOT NULL,
 	PRIMARY KEY(eventID)
-	FOREIGN KEY(generalID) REFERENCES generalstable(ID)
+	FOREIGN KEY(generalID) REFERENCES commandersstable(ID)
 	FOREIGN KEY(battleID) REFERENCES battlestable(ID)
 );
 
