@@ -10,17 +10,17 @@ p {font-family: Garamond;}
 {% endblock %}
 {%block body%}
 <form method="POST" action="">
-    <p>
         <H2>Enter details of a Historical Battle </H2> <br>
         Location<br> <input type = "text" name= "Location" /> <br>
         Start Date<br> <input type = "date" name = "Start" /> <br>
         End Date<br>  <input type = "date" name = "End" /> <br>
+        AD or BC?<br><select id="bcad" name="bcad">
+            <option value="AD">AD</option>
+            <option value="BC">BC</option>
+          </select> <br>
         Type (Land or Naval)<br> <input type = "text" name = "Type" /> <br>
         <input type = "submit">
-    </p>
     </form>
-    
-    <p>
         <H2>List of Battles</H2>
         {% for item in battleinfo %}
         <tr>
@@ -28,16 +28,14 @@ p {font-family: Garamond;}
             <td>{{item[2]}},</td>
             <td>{{item[3]}},</td>
             <td>{{item[4]}},</td>
+            <td>{{item[5]}},</td>
             <br>
         </tr>
         {% endfor %}
-    </p>
     <br>
-    <p>
         <form action = '/delete/battle' method='POST'>
             Battle to be deleted<br><input type = "text" name = "RemoveThis" /> <br>
             <button type = "submit" action = "{{ url_for('delete_commander') }}"/>Delete</button>
         </form>
-    </p>
-    <br>
+        <br>
 {% endblock %}

@@ -6,6 +6,15 @@
         <meta charset="UTF-8">
         <title>Historical Battle Comparisons</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <style>
+          h1 {text-align:center; font-weight: bold;}
+          h2 {font-weight: bold;}
+          p {margin: 5px 0; padding: 5px; border: 2px solid sandybrown; }
+          p {background-color:burlywood; }
+          body {font-family: Garamond;}
+          form {background-color:burlywood; border: 2px solid sandybrown; }
+          table {background-color: burlywood; border: 2px solid sandybrown; }
+          </style>
         {% endblock %}
     </head>
     <body style="background-color:beige">
@@ -18,7 +27,13 @@
                 <a class="nav-link" href="/battles">⚔ Battles</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">✯ Generals</a>
+                <a class="nav-link" href="/update/commander">✯ Generals</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/update/battle">Battles-Updates</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/event">Assign</a>
               </li>
             </ul>
           </nav>
