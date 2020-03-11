@@ -3,9 +3,9 @@ BEGIN;
 DROP TABLE IF EXISTS relations;
 
 CREATE TABLE relations (
-	eventID INT(3) NOT NULL AUTO_INCREMENT,
-	generalID INT(3) NOT NULL,
-	battleID INT(3) NOT NULL,
+	eventID INT(3) AUTO_INCREMENT,
+	generalID INT(3),
+	battleID INT(3),
 	PRIMARY KEY(eventID),
 	FOREIGN KEY(generalID) REFERENCES commandersstable(ID),
 	FOREIGN KEY(battleID) REFERENCES battlestable(ID)
