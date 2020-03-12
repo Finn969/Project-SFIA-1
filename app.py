@@ -155,6 +155,7 @@ def assign_to_event():
 
 @app.route('/delete/event', methods=['GET', 'POST'])
 def delete_relation():
+    eventinfo = []
     remove_name = request.form["UnassignThis"]
     remove_location = request.form['UnassignThisToo']
     cur = mysql.connection.cursor()
