@@ -22,6 +22,10 @@
         Surname <br><input type = "text" name = "USurname" /> <br>
         Nationality <br><input type = "text" name = "UNationality" /> <br>
         Date of Birth <br><input type = "date" name = "UDate_of_Birth" /> <br>
+        AD or BC?<br><select id="bcad" name="Ubcad">
+            <option value="AD">AD</option>
+            <option value="BC">BC</option>
+        </select> <br>
         Notes <br><input type = "text" name = "UNotes" /> <br>
         <button type = "submit" action = "{{ url_for('update_commander') }}"/>Update</button>
 </form>

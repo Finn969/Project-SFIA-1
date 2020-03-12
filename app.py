@@ -2,7 +2,10 @@ from flask import Flask, render_template, request
 from flask_mysqldb import MySQL
 import os
 app = Flask(__name__)
-#gone for git
+app.config["MYSQL_HOST"] = '35.234.149.105' #os.environ['MYSQLHOST']
+app.config["MYSQL_USER"] = 'root' #os.environ['MYSQLUSE']
+app.config["MYSQL_PASSWORD"] = 'Pr0metheus' #os.environ['MYSQLPASS']
+app.config["MYSQL_DB"] = 'battlesdb'#os.environ['MYSQLDB']
 mysql= MySQL(app)
 
 
@@ -20,7 +23,7 @@ def homepage():
          cur.execute("INSERT INTO commanderstable(firstname,lastname,nationality,date_of_birth,bcad,notes) VALUES(%s,%s,%s,%s,%s,%s)", (FName,LName,Country,Birthday,BCAD,Notes))
          mysql.connection.commit()
 
-    cur.execute('SELECT * FROM commanderstable')
+    cur.execute('''SELECT firstname,lastname,nationality,DATE_FORMAT(date_of_birth, '%D %M %Y'),bcad,notes FROM commanderstable''')
     rows = cur.fetchall()
     mysql.connection.commit()
     cur.close()
@@ -41,8 +44,7 @@ def battlespage():
          type = details['Type']
          cur.execute("INSERT INTO battlestable(location,startdate,enddate,bcad,type) VALUES(%s,%s,%s,%s,%s)", (Location,start,end,BCAD,type))
          mysql.connection.commit()
-
-    cur.execute('SELECT * FROM battlestable')
+    cur.execute('''SELECT location,DATE_FORMAT(startdate, '%D %M %Y'),bcad,DATE_FORMAT(startdate, '%D %M %Y'),bcad,type FROM battlestable''')
     rows = cur.fetchall()
     mysql.connection.commit()
     cur.close()
@@ -57,9 +59,10 @@ def delete_commander():
     remove_name = request.form["DeleteThis"]
     cur = mysql.connection.cursor()
     cur.execute('DELETE FROM commanderstable WHERE lastname LIKE %s',(remove_name,))
-    cur.execute('SELECT * FROM commanderstable')
+    cur.execute('''SELECT firstname,lastname,nationality,DATE_FORMAT(date_of_birth, '%D %M %Y'),bcad,notes FROM commanderstable''')
     rows = cur.fetchall()
     mysql.connection.commit()
+    cur.close()
     commanderinfo = []
     for row in rows:
         commanderinfo.append(row)
@@ -70,18 +73,14 @@ def delete_battle():
     remove_name = request.form["RemoveThis"]
     cur = mysql.connection.cursor()
     cur.execute('DELETE FROM battlestable WHERE location LIKE %s',(remove_name,))
-    cur.execute('SELECT * FROM battlestable')
+    cur.execute('''SELECT location,DATE_FORMAT(startdate, '%D %M %Y'),bcad,DATE_FORMAT(startdate, '%D %M %Y'),bcad,type FROM battlestable''')
     rows = cur.fetchall()
     mysql.connection.commit()
-    commanderinfo = []
+    cur.close()
+    battleinfo = []
     for row in rows:
-        commanderinfo.append(row)
-    return render_template('homepage.html', commanderinfo=commanderinfo)
-
-#@app.route('/select/commander', methods=['GET','POST'])
-#def select_commander():
- #   select_name = request.form['ReplaceThis']
-  #  return render_template('updategeneral.html', select_name = select_name)
+        battleinfo.append(row)
+    return render_template('battlespage.html', battleinfo=battleinfo)
 
 @app.route('/update/battle', methods=['GET','POST'])
 def update_battle():
@@ -92,15 +91,17 @@ def update_battle():
         ULocation = details['Location']
         Ustart = details['Start']
         Uend = details['End']
+        UBCAD = details['bcad']
         Utype = details['Type']
-        cur.execute("UPDATE battlestable SET location = %s,startdate = %s,enddate = %s,type = %s  WHERE location = %s;",(ULocation,Ustart,Uend,Utype,OLocation))
-        mysql.connection.commit()
+        cur.execute("UPDATE battlestable SET location = %s,startdate = %s,enddate = %s,bcad = %s,type = %s  WHERE location = %s;",(ULocation,Ustart,Uend,UBCAD,Utype,OLocation))
+        cur.execute('''SELECT location,DATE_FORMAT(startdate, '%D %M %Y'),bcad,DATE_FORMAT(startdate, '%D %M %Y'),bcad,type FROM battlestable''')
         rows = cur.fetchall()
         mysql.connection.commit()
-        commanderinfo = []
+        cur.close()
+        battleinfo = []
         for row in rows:
-            commanderinfo.append(row)
-        return render_template('homepage.html', commanderinfo=commanderinfo)
+            battleinfo.append(row)
+        return render_template('battlespage.html', battleinfo=battleinfo)
     return render_template('updatebattle.html')
 
 @app.route('/update/commander', methods=['GET','POST'])
@@ -113,40 +114,41 @@ def update_commander():
         LName = details['USurname']
         Country = details['UNationality']
         Birthday = details['UDate_of_Birth']
+        BCAD = details['Ubcad']
         Notes = details['UNotes']
-        cur.execute("UPDATE commanderstable SET firstname = %s,lastname = %s,nationality = %s,date_of_birth = %s,notes = %s  WHERE lastname = %s;",(FName,LName,Country,Birthday,Notes,OLName))
-        mysql.connection.commit()
+        cur.execute("UPDATE commanderstable SET firstname = %s,lastname = %s,nationality = %s,date_of_birth = %s,bcad = %s,notes = %s  WHERE lastname = %s;",(FName,LName,Country,Birthday,BCAD,Notes,OLName))
+        cur.execute('''SELECT firstname,lastname,nationality,DATE_FORMAT(date_of_birth, '%D %M %Y'),bcad,notes FROM commanderstable''')
         rows = cur.fetchall()
         mysql.connection.commit()
+        cur.close()
         commanderinfo = []
         for row in rows:
             commanderinfo.append(row)
-        return render_template('homepage.html', commanderinfo=commanderinfo)
+        return render_template('homepage.html', commanderinfo = commanderinfo)
     return render_template('updategeneral.html')
 
 @app.route('/event', methods=['GET','POST'])
 def assign_to_event():
     eventinfo = []
+    cur = mysql.connection.cursor()
     if request.method == 'POST':
         details = request.form
-        cur = mysql.connection.cursor()
         LName = details['Surname']
         Location = details['Location']
         cur.execute('INSERT INTO relations(generalID,battleID) VALUES((SELECT ID FROM commanderstable WHERE lastname = %s),(SELECT ID FROM battlestable WHERE location = %s))',(LName,Location))
         mysql.connection.commit()
-        cur.execute('SELECT * FROM relations')
+        cur.execute('SELECT commanderstable.firstname, commanderstable.lastname, battlestable.location, relations.eventID FROM commanderstable, battlestable, relations WHERE commanderstable.ID = relations.generalID AND battlestable.ID = relations.battleID')
         rows = cur.fetchall()
         mysql.connection.commit()
         cur.close()
         eventinfo = []
         for row in rows:
             eventinfo.append(row)
-    return render_template('events.html', eventinfo = eventinfo)
-    cur.execute('SELECT * FROM relations')
+        return render_template('events.html', eventinfo = eventinfo)
+    cur.execute('SELECT commanderstable.firstname, commanderstable.lastname, battlestable.location, relations.eventID FROM commanderstable, battlestable, relations WHERE commanderstable.ID = relations.generalID AND battlestable.ID = relations.battleID')
     rows = cur.fetchall()
     mysql.connection.commit()
     cur.close()
-
     for row in rows:
         eventinfo.append(row)
     return render_template('events.html', eventinfo = eventinfo)
@@ -157,13 +159,13 @@ def delete_relation():
     remove_location = request.form['UnassignThisToo']
     cur = mysql.connection.cursor()
     cur.execute('DELETE FROM relations WHERE (generalID = (SELECT ID FROM commanderstable WHERE lastname = %s)) AND (battleID = (SELECT ID FROM battlestable WHERE location = %s)) ',(remove_name,remove_location))
-   # cur.execute('SELECT * FROM battlestable')
-    #rows = cur.fetchall()
+    cur.execute('SELECT commanderstable.firstname, commanderstable.lastname, battlestable.location, relations.eventID FROM commanderstable, battlestable, relations WHERE commanderstable.ID = relations.generalID AND battlestable.ID = relations.battleID')
+    rows = cur.fetchall()
     mysql.connection.commit()
-   # commanderinfo = []
-    #for row in rows:
-    #    commanderinfo.append(row)
-    return render_template('events.html')#, commanderinfo=commanderinfo)
+    cur.close()
+    for row in rows:
+        eventinfo.append(row)
+    return render_template('events.html', eventinfo = eventinfo)
 
 if __name__ == '__main__':
     app.run('0.0.0.0',debug=True)

@@ -18,18 +18,23 @@ p {font-family: Garamond;}
             <option value="AD">AD</option>
             <option value="BC">BC</option>
           </select> <br>
-        Type (Land or Naval)<br> <input type = "text" name = "Type" /> <br>
-        <input type = "submit">
+        Type<br> <select id="Type" name="Type">
+            <option value="Land">Land</option>
+            <option value="Naval">Naval</option>
+            <option value="Seige">Seige</option>
+          </select> <br>
+          <input type = "submit">
     </form>
         <H2>List of Battles</H2>
         {% for item in battleinfo %}
         <tr>
-            <td>{{item[1]}},</td>
-            <td>{{item[2]}},</td>
-            <td>{{item[3]}},</td>
+            <td>The Battle of {{item[0]}} lasted from the </td>
+            <td>{{item[1]}}</td>
+            <td>{{item[2]}} to the</td>
+            <td>{{item[3]}}</td>
             <td>{{item[4]}},</td>
-            <td>{{item[5]}},</td>
-            <br>
+            <td> it was a {{item[5]}} battle.</td>
+            <br><br>
         </tr>
         {% endfor %}
     <br>

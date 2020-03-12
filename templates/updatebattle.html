@@ -23,8 +23,15 @@
         <input type = "date" name = "Start" /> <br>
         End Date <br>
         <input type = "date" name = "End" /> <br>
-        Type <br>
-        <input type = "text" name = "Type" /> <br>
+        AD or BC?<br><select id="bcad" name="bcad">
+            <option value="AD">AD</option>
+            <option value="BC">BC</option>
+          </select> <br>
+        Type <br> <select id="Type" name="Type">
+            <option value="Land">Land</option>
+            <option value="Naval">Naval</option>
+            <option value="Seige">Seige</option>
+          </select> <br>
         <button type = "submit" action = "{{ url_for('update_battle') }}"/>Update</button>
 </form>
 {% endblock %}
