@@ -1,13 +1,15 @@
+
 pipeline {
     agent any
-    
+
     stages {
-        stage('pre-run') {
+        stage('Development Environment') {
             steps {
-                sh 'chmod +x ./script/ *'
-                sh 'echo "Hello World!"'
-                sh 'touch Leeroy.txt'
+                sh 'chmod +x ./script/*'
+                sh './script/before_installation.sh'
+                sh './script/installation.sh'
             }
+
         }
     }
 }
