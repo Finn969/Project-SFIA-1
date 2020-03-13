@@ -15,7 +15,11 @@
 
 <form method="POST" action="">
         Original Surname
-        <input type = "text" name= "OSurname" /> <br>
+        <select id="OLocation" name="OLocation">
+            {% for item in info %}
+            <option value="{{ item }}"> {{item[0]}} </option>
+            {% endfor %}
+          </select>
         <h3>Enter updated details</h3> <br>
         Forename<br>
         <input type = "text" name= "UForename" /> <br>

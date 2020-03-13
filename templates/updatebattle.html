@@ -15,7 +15,14 @@
 
 <form method="POST" action="">
         Original Location/Name
-        <input type = "text" name= "OLocation" /> <br>
+
+        <select id="OLocation" name="OLocation">
+          {% for item in battleinfo %}
+          <option value="{{ item }}"> {{item[0]}} </option>
+          {% endfor %}
+        </select>
+
+        
         <h3>Enter updated details</h3> <br>
         Location<br>
         <input type = "text" name= "Location" /> <br>

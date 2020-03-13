@@ -71,7 +71,7 @@ def delete_commander():
 @app.route('/delete/battle', methods=['GET', 'POST'])
 def delete_battle():
     remove_name = request.form["RemoveThis"]
-    cur = mysql.connection.cursor()
+
     cur.execute('DELETE FROM battlestable WHERE location LIKE %s',(remove_name,))
     cur.execute('''SELECT location,DATE_FORMAT(startdate, '%D %M %Y'),bcad,DATE_FORMAT(startdate, '%D %M %Y'),bcad,type FROM battlestable''')
     rows = cur.fetchall()
@@ -84,9 +84,18 @@ def delete_battle():
 
 @app.route('/update/battle', methods=['GET','POST'])
 def update_battle():
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT location FROM battlestable')
+    rows = cur.fetchall()
+    mysql.connection.commit()
+    cur.close()
+    battleinfo = []
+    for row in rows:
+        battleinfo.append(row)
     if request.method == 'POST':
         details = request.form
         cur = mysql.connection.cursor()
+        
         OLocation = details['OLocation']
         ULocation = details['Location']
         Ustart = details['Start']
@@ -102,10 +111,18 @@ def update_battle():
         for row in rows:
             battleinfo.append(row)
         return render_template('battlespage.html', battleinfo=battleinfo)
-    return render_template('updatebattle.html')
+    return render_template('updatebattle.html', battleinfo = battleinfo)
 
 @app.route('/update/commander', methods=['GET','POST'])
 def update_commander():
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT lastname FROM commanderstable')
+    rows = cur.fetchall()
+    mysql.connection.commit()
+    cur.close()
+    info = []
+    for row in rows:
+        info.append(row)
     if request.method == 'POST':
         details = request.form
         cur = mysql.connection.cursor()
@@ -125,7 +142,7 @@ def update_commander():
         for row in rows:
             commanderinfo.append(row)
         return render_template('homepage.html', commanderinfo = commanderinfo)
-    return render_template('updategeneral.html')
+    return render_template('updategeneral.html', info = info)
 
 @app.route('/event', methods=['GET','POST'])
 def assign_to_event():
