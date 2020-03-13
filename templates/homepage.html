@@ -6,7 +6,6 @@
 {%block body%}
 
 <h1>HISTORICAL BATTLE COMPARISONS</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id gravida quam. Curabitur sed dapibus dui. </p>
 <form method="POST" action="">
         <H2>Enter details of a Historical General </H2> <br>
         Forename<br>
@@ -41,5 +40,6 @@
             <button type = "submit" action = "{{ url_for('delete_commander') }}"/>Delete</button>
         </form>
     <br>
-
+    <p>To alter an existing entry, use the <a  href="/update/commander"> update commander</a> page</p>
+    <br>
 {% endblock %}
