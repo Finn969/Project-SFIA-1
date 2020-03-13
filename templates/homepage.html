@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block head %}
+{{super()}}
+
+{% endblock %}
+{%block body%}
+
+<h1>HISTORICAL BATTLE COMPARISONS</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id gravida quam. Curabitur sed dapibus dui. </p>
+<form method="POST" action="">
+        <H2>Enter details of a Historical General </H2> <br>
+        Forename<br>
+        <input type = "text" name= "Forename" /> <br>
+        Surname <br><input type = "text" name = "Surname" /> <br>
+        Nationality <br><input type = "text" name = "Nationality" /> <br>
+        Date of Birth <br><input type = "date" name = "Date_of_Birth" /> <br>
+        AD or BC?<br><select id="bcad" name="bcad">
+            <option value="AD">AD</option>
+            <option value="BC">BC</option>
+          </select> <br>
+        Notes <br><input type = "text" name = "Notes" /> <br>
+        <input type = "submit">
+    </form> 
+        <H2>List of Generals</H2>
+        {% for item in commanderinfo %}
+        <tr>
+            <td>{{item[0]}}</td>
+            <td>{{item[1]}}, a </td>
+            <td>{{item[2]}} commander,</td>
+            <td> born on the {{item[3]}}</td>
+            <td>{{item[4]}}.</td>
+            <td>{{item[5]}}.</td>
+            <br><br>
+        </tr>
+        {% endfor %}
+    
+    <br>
+        <H2>Delete an entry</H2>
+        <form action = '/delete/commander' method='POST'>
+            General to be deleted<input type = "text" name = "DeleteThis" /> <br>
+            <button type = "submit" action = "{{ url_for('delete_commander') }}"/>Delete</button>
+        </form>
+    <br>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block head %}
+{{super()}}
+
+{% endblock %}
+{%block body%}
+<h2 style="text-align: center;">Assign commanders to battles</h2>
+<form method="POST" action="">
+    Commander's Surname:<br>
+    <input type = "text" name = "Surname" /> <br>
+    Location of the Battle:<br>
+    <input type = "text" name = "Location" /> <br>
+    <input type = "submit">
+</form>
+<br>
+<H2>List of Events</H2>
+{% for item in eventinfo %}
+<tr>
+    <td>{{item[0]}}</td>
+    <td>{{item[1]}} was at</td>
+    <td>the Battle of {{item[2]}}.</td>
+    <br><br>
+</tr>
+{% endfor %}
+<br>
+<form action = '/delete/event' method='POST'>
+    General to be unassigned<br><input type = "text" name = "UnassignThis" /> <br>
+    Battle to be unassigned<br><input type = "text" name = "UnassignThisToo" /> <br>
+    <button type = "submit" action = "{{ url_for('delete_commander') }}"/>Delete</button>
+</form>
+<br>
+
+
+{% endblock %}
