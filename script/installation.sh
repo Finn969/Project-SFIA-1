@@ -1,11 +1,6 @@
 #!/bin/bash
-
 source venv/bin/activate
-
-pip3 install flask
-
-pip3 install flask_mysqldb
-
-#source ~/.bashrc
+sudo python3 -m pip3 install flask
+sudo python3 -m pip3 install flask_mysqldb
 
 python3 app.py
