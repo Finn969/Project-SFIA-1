@@ -53,23 +53,26 @@ I followed the set of tasks laid out in the 'Milestones' posted on slack.
 
 ### End Point
 
-## Risk Assessment, to be edited
+## Risk Assessment
 ---
 
 |Risk No.|Risk|Description|Hazard|Likelihood|Impact|Solution|
 |---|---|---|---|---|---|---|
-|1.0.1|Overrun on time.|Due to poor time management, the project is not completed.|Worst case scenario, marks are lost due to lack of coverage of brief.|2|5|Make good use of Kanban to manage workflow, and efficient time use of office resources.|
-|1.0.2|Data breach on workstation.|Due to accident or malicious action, workstation is compromised.|Worst case scenario, severe progress loss.|1|5|Change passwords on workstation, keep e-services logged off when not in use.|
-|1.1.1|Overrunning on GCP free data limits.|An instance is left running, or an account breach enables the resources on the account to be drained.|Worst case scenario, databases are unaccessable.|1|5|Continue monitoring GCP usage. Copy databases offline as final backup.|
-|1.1.2.1|Database security: SQL|The GCP server is breached in some way, compromising data integrity.|Worst case scenario, data is lost, or user data is compromised.|3|5|Ensure user and personal data is encrypted, and passwords hashed, before being moved to the database.|
-|1.1.2.2|Database security: SSH|Unmanaged connections cause data leak or damage, keys are lost or stolen.| Worst case scenario, GDPR noncompliance or total data compromisation.|2|5|Learn and make use of GCP's SSH key management role system, and implement it correctly.|
-|1.1.2.3|Database security: SQL-I|Unsanitised user input allows SQL injection into the database.|Worst case scenario, database is maliciously destroyed.|2|5|Ensure any user accessible inputs are sanitised, and implement permission roles.|
+|1.0.1|Running out of time.|Project left unfinished due to poor time management.|Project may be incomplete and marks lost as a result.|2|5|Manage time and plan objectives through use of Kanban board, ensure work is completed early.|
+|1.0.2|Data breach on workstation.|Work station is compromised.|Severe progress loss.|1|5|Change passwords on workstation, keep instances off when not in use.|
+|1.1.1|Depleted GCP credit.|An instance is left running, or an account breach enables the resources on the account to be drained.|Databases unable to be access|1|5|Continue monitoring GCP usage. Copy databases offline as final backup.|
+|1.1.2.1|Database security: SQL| A GCP server is breached.|Data potentially lost or destroyed|2|5|Ensure passwords are secure, backup code where possible.|
+|1.2.1|Health problem: Injury|I suffer an injury due to an accident or physical attack.|Potentially become unable to complete the project|1|5|Avoid situations with risk of injury.|
+|1.2.2|Health problem: Disease|I catch a serious infection|Potentially become unable to complete the project|2|5|Ensure good hygene and cleanliness|
+
 
 ## Project Architecture
 ---
-
+I don't know what this will look like yet
 ### Entity Relationships
+![picture of the ERD](https://github.com/Finn969/Project-SFIA-1/blob/master/ERD.png)
 
 ### Overall Architecture
-
+I don't know what this will look like yet
 ### Issues Encountered
+Placeholder text

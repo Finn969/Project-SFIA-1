@@ -6,7 +6,7 @@ pipeline {
         stage('Development Environment') {
             steps {
                 sh 'chmod +x ./script/*'
-                sh './script/before_installation.sh'
+                sh './script/before_install.sh'
                 sh './script/installation.sh'
             }
 
