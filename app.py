@@ -9,7 +9,6 @@ app.config["MYSQL_PASSWORD"] = os.environ['MYSQLPASS']
 app.config["MYSQL_DB"] = os.environ['MYSQLDB']
 mysql= MySQL(app)
 
-#Testing the Jenkins webhook again.
 
 @app.route('/', methods=['GET', 'POST'])
 def homepage():
