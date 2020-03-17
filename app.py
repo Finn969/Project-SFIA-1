@@ -15,9 +15,9 @@ def homepage():
     cur = mysql.connection.cursor()
     if request.method == 'POST':
          details = request.form
-         FName = details['Forename']
-         LName = details['Surname']
-         Country = details['Nationality']
+         FName = (details['Forename']).title()
+         LName = (details['Surname']).title()
+         Country = (details['Nationality']).title()
          Birthday = details['Date_of_Birth']
          BCAD = details['bcad']
          Notes = details['Notes']
@@ -38,7 +38,7 @@ def battlespage():
     cur = mysql.connection.cursor()
     if request.method == 'POST':
          details = request.form
-         Location = details['Location']
+         Location = (details['Location']).title()
          start = details['Start']
          end = details['End']
          BCAD = details['bcad']

@@ -18,7 +18,7 @@
 
         <select id="OLocation" name="OLocation">
           {% for item in battleinfo %}
-          <option value="{{ item }}"> {{item[0]}} </option>
+          <option value="{{ item[0] }}"> {{item[0]}} </option>
           {% endfor %}
         </select>
 
@@ -41,4 +41,5 @@
           </select> <br>
         <button type = "submit" action = "{{ url_for('update_battle') }}"/>Update</button>
 </form>
+<br>
 {% endblock %}
