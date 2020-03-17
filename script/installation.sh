@@ -6,3 +6,4 @@ python3 -m pip install urllib3
 python3 -m pip install pytest
 python3 -m pip install coverage
 source ~/.bashrc
+python3 app.py
