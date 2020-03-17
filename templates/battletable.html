@@ -9,7 +9,7 @@
     p {font-family: Garamond;}
     table {font-family: Garamond; border-collapse: collapse; width: 100%;}
     td, th {
-  border: 1px solid burlywood;text-align: left;padding: 8px;}
+  border: 1px solid sandybrown;text-align: left;padding: 8px;}
 tr:nth-child(even) {background-color: beige;}
 </style>
 </head>
@@ -22,6 +22,38 @@ tr:nth-child(even) {background-color: beige;}
 
 <table>
     <tr>
-      <th>Company</th>
-      <th>Contact</th>
+        <td>Part of the {{binfo[1]}}</td>
+        </tr>
+        <tr>
+        <td>Start date: {{binfo[2]}}{{binfo[4]}}</td>
+      </tr>
+      <tr>
+        <td>End date: {{binfo[3]}}{{binfo[4]}}</td>
+      </tr>
+      <tr>
+        <td>Result: {{binfo[5]}} victory for {{binfo[7]}}</td>
+      </tr>
+      <tr>
+        <td>Type: {{binfo[6]}}</td>
+      </tr>
+      <tr>
+        <th>Belligerents</th>
+      </tr>
+      <tr>
+          <td>{{binfo[7]}}</td>
+          <td>{{binfo[10]}} </td>
+      </tr>
+      <tr>
+        <th>Commanders</th>
+      </tr>
+      <tr>
+          <td>{{binfo[8]}}</td>
+          <td>{{binfo[11]}} </td>
+      </tr>
+      <th>Strength</th>
     </tr>
+    <tr>
+        <td>{{binfo[9]}}</td>
+        <td>{{binfo[12]}} </td>
+    </tr>
+</table>
