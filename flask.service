@@ -1,0 +1,7 @@
+[unit]
+Description= My SFIA
+[Service]
+User=jenkins
+ExecStart= /var/lib/jenkins/workspace/Pipeline1/script/installation.sh
+[Install]
+WantedBy=multi-user.target

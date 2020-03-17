@@ -10,7 +10,7 @@ pipeline {
                 sh 'sudo systemctl daemon-reload'
                 sh 'sudo systemctl enable flask.service'
                 sh 'sudo systemctl restart flask.service'
-                sh 'sleep 10'
+                sh 'sleep 15'
                 sh 'echo "successful build!"'
             }
         }
