@@ -11,13 +11,14 @@
           h2 {font-weight: bold;}
           p {margin: 5px 0; padding: 5px; border: 2px solid sandybrown; }
           p {background-color:burlywood; }
-          body {font-family: Garamond;}
+          body {font-family: Garamond; background-color: beige;}
           form {background-color:burlywood; border: 2px solid sandybrown; }
           table {background-color: burlywood; border: 2px solid sandybrown; }
+          
           </style>
         {% endblock %}
     </head>
-    <body style="background-color:beige">
+    <body>
         <nav style = "background-color:burlywood;" class="navbar navbar-expand-sm">
             <ul class="navbar-nav">
               <li class="nav-item active">
@@ -43,7 +44,6 @@
         <div id="footer" style = 'background-color: burlywood;
         width: 100%;''>
             {% block footer %}
-            <br>
             Created 2020 by Finn Macrae.
             {% endblock %}
           </div>
