@@ -8,5 +8,12 @@ pipeline {
                 sh './script/installation.sh'
             }
         }
+        stage('Testing'){
+            steps{
+                sh 'pytest ./tests/testing.py'
+                sh 'echo "Testing Successful!"'
+                
+            }
+        }
     }
 }
