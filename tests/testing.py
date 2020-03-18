@@ -1,3 +1,4 @@
+#!/usr/bin/env python3 m pip install --upgrade flask
 import urllib3
 from flask import Flask, render_template, request
 from flask_mysqldb import MySQL
