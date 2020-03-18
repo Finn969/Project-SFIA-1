@@ -67,7 +67,7 @@ def test_delete_ctable():
     with app.app_context():
         cur = mysql.connection.cursor()
         start_records = cur.execute('SELECT * FROM commanderstable')
-        cur.execute('DELETE FROM commanderstable WHERE lastname = "Holder")
+        cur.execute('DELETE FROM commanderstable WHERE lastname = "Holder"')
         end_records = cur.execute('SELECT * FROM commanderstable')
         cur.close()
         assert end_records + 1 == start_records
