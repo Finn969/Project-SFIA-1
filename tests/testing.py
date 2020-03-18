@@ -92,3 +92,26 @@ def test_delete_btable():
         end_records = cur.execute('SELECT * FROM battlestable')
         cur.close()
         assert end_records + 1 == start_records
+
+def test_create_rtable():
+    with app.app_context():
+        cur = mysql.connection.cursor()
+        cur.execute('INSERT INTO commanderstable (firstname,lastname,nationality,date_of_birth,bcad,notes) VALUES("Place","Holder","United States","2000-1-1","AD","Lorem Ipsum")')
+        cur.execute('INSERT INTO battlestable (location,startdate,enddate,bcad,type) VALUES("Placeholder","2000-1-1","2000-1-2","AD","Land")')
+        start_records = cur.execute('SELECT * FROM relations')
+        cur.execute('INSERT INTO relations(generalID,battleID) VALUES((SELECT ID FROM commanderstable WHERE firstname = "Place" AND lastname = "Holder"),(SELECT ID FROM battlestable WHERE location = "Placeholder"))')
+        end_records = cur.execute('SELECT * FROM relations')
+        cur.close()
+        assert end_records - 1 == start_records
+
+def test_delete_rtable():
+    with app.app_context():
+        cur = mysql.connection.cursor()
+        cur.execute('INSERT INTO commanderstable (firstname,lastname,nationality,date_of_birth,bcad,notes) VALUES("Place","Holder","United States","2000-1-1","AD","Lorem Ipsum")')
+        cur.execute('INSERT INTO battlestable (location,startdate,enddate,bcad,type) VALUES("Placeholder","2000-1-1","2000-1-2","AD","Land")')
+        cur.execute('INSERT INTO relations(generalID,battleID) VALUES((SELECT ID FROM commanderstable WHERE firstname = "Place" AND lastname = "Holder"),(SELECT ID FROM battlestable WHERE location = "Placeholder"))')
+        start_records = cur.execute('SELECT * FROM relations')
+        cur.execute('DELETE FROM relations WHERE (generalID = (SELECT ID FROM commanderstable WHERE firstname = "Place" AND lastname = "Holder")) AND (battleID = (SELECT ID FROM battlestable WHERE location = "Placeholder"))')
+        end_records = cur.execute('SELECT * FROM relations')
+        cur.close()
+        assert end_records - 1 == start_records
