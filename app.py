@@ -71,7 +71,7 @@ def delete_commander():
 
 @app.route('/delete/battle', methods=['GET', 'POST'])
 def delete_battle():
-    remove_name = request.form["RemoveThis"]
+    remove_name = request.form["RemoveThis"].title()
     cur = mysql.connection.cursor()
     cur.execute('DELETE FROM battlestable WHERE location LIKE %s',(remove_name,))
     cur.execute('''SELECT location,DATE_FORMAT(startdate, '%D %M %Y'),bcad,DATE_FORMAT(startdate, '%D %M %Y'),bcad,type FROM battlestable''')
@@ -97,8 +97,8 @@ def update_battle():
         details = request.form
         cur = mysql.connection.cursor()
         
-        OLocation = details['OLocation']
-        ULocation = details['Location']
+        OLocation = details['OLocation'].title()
+        ULocation = details['Location'].title()
         Ustart = details['Start']
         Uend = details['End']
         UBCAD = details['bcad']
@@ -127,10 +127,10 @@ def update_commander():
     if request.method == 'POST':
         details = request.form
         cur = mysql.connection.cursor()
-        OLName = details['OSurname']
-        FName = details['UForename']
-        LName = details['USurname']
-        Country = details['UNationality']
+        OLName = details['OSurname'].title()
+        FName = details['UForename'].title()
+        LName = details['USurname'].title()
+        Country = details['UNationality'].title()
         Birthday = details['UDate_of_Birth']
         BCAD = details['Ubcad']
         Notes = details['UNotes']
