@@ -114,4 +114,4 @@ def test_delete_rtable():
         cur.execute('DELETE FROM relations WHERE (generalID = (SELECT ID FROM commanderstable WHERE firstname = "Place" AND lastname = "Holder")) AND (battleID = (SELECT ID FROM battlestable WHERE location = "Placeholder"))')
         end_records = cur.execute('SELECT * FROM relations')
         cur.close()
-        assert end_records - 1 == start_records
+        assert end_records + 1 == start_records
