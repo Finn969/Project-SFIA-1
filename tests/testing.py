@@ -1,4 +1,7 @@
 import urllib3
+from flask import Flask, render_template, request
+from flask_mysqldb import MySQL
+mysql= MySQL(app)
 
 def test_homepage():
     http = urllib3.PoolManager()
@@ -29,3 +32,11 @@ def test_relationspage():
 #    http = urllib3.PoolManager()
  #   r = http.request('GET','http://35.246.9.150:5000/ghost')
  #   assert 200 == r.status
+
+def test_select_ctable():
+    with app.app_context():
+        cur = mysql.connection.cursor()
+        num_records = cur.execute('SELECT * FROM commanderstable')
+        mysql.connection.commit()
+        cur.close()
+        assert 6 == num_records
