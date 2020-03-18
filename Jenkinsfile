@@ -17,6 +17,9 @@ pipeline {
         stage('Testing'){
             steps{
                 sh './script/tester.sh'
+                sh 'python3 -m pytest ./tests/testing.py'
+                sh 'python3 -m coverage run -m pytest ./tests/testing.py'
+                sh 'python3 -m coverage report -m'
                 sh 'echo "Testing Successful!"'
                 
             }
