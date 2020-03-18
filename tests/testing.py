@@ -68,7 +68,7 @@ def test_create_btable():
     with app.app_context():
         cur = mysql.connection.cursor()
         start_records = cur.execute('SELECT * FROM battlestable')
-        cur.execute('INSERT INTO battlestable (location,startdate,enddate,bcad,type) VALUES("Placeholder","2000-1-1",,"2000-1-2","AD","Land")')
+        cur.execute('INSERT INTO battlestable (location,startdate,enddate,bcad,type) VALUES("Placeholder","2000-1-1","2000-1-2","AD","Land")')
         end_records = cur.execute('SELECT * FROM commanderstable')
         cur.close()
         assert end_records - 1 == start_records
@@ -76,7 +76,7 @@ def test_create_btable():
 def test_update_btable():
     with app.app_context():
         cur = mysql.connection.cursor()
-        cur.execute('INSERT INTO battlestable (location,startdate,enddate,bcad,type) VALUES("Placeholder","2000-1-1",,"2000-1-2","AD","Land")')
+        cur.execute('INSERT INTO battlestable (location,startdate,enddate,bcad,type) VALUES("Placeholder","2000-1-1","2000-1-2","AD","Land")')
         cur.execute('SELECT location FROM battlestable')
         cur.execute('UPDATE battlestable SET type = "Siege"  WHERE location = "Placeholder"')    
         cur.execute('SELECT type FROM battlestable WHERE location="Placeholder"')
@@ -86,7 +86,7 @@ def test_update_btable():
 def test_delete_btable():
     with app.app_context():
         cur = mysql.connection.cursor()
-        cur.execute('INSERT INTO battlestable (location,startdate,enddate,bcad,type) VALUES("Placeholder","2000-1-1",,"2000-1-2","AD","Land")')
+        cur.execute('INSERT INTO battlestable (location,startdate,enddate,bcad,type) VALUES("Placeholder","2000-1-1","2000-1-2","AD","Land")')
         start_records = cur.execute('SELECT * FROM battlestable')
         cur.execute('DELETE FROM commanderstable WHERE location = "Placeholder"')
         end_records = cur.execute('SELECT * FROM battlestable')
