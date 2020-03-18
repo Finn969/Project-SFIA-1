@@ -58,7 +58,8 @@ def test_update_ctable():
         cur.execute('INSERT INTO commanderstable (firstname,lastname,nationality,date_of_birth,bcad,notes) VALUES("Place","Holder","United States","2000-1-1","AD","Lorem Ipsum")')
         cur.execute('SELECT firstname,lastname FROM commanderstable')
         cur.execute('UPDATE commanderstable SET notes = "Placeholder"  WHERE firstname = "Place" AND lastname = "Holder"')    
-        placeholder_notes = cur.execute('SELECT notes FROM commanderstable WHERE firstname="Place" AND lastname="Holder"')
+        cur.execute('SELECT notes FROM commanderstable WHERE firstname="Place" AND lastname="Holder"')
+        placeholder_notes = cur.fetchall()
         assert placeholder_notes == 'Placeholder'
 
 def test_delete_ctable():
