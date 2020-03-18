@@ -35,14 +35,6 @@ def test_relationspage():
     r = http.request('GET','http://35.246.9.150:5000/event')
     assert 200 == r.status
 
-def test_select_ctable():
-    with app.app_context():
-        cur = mysql.connection.cursor()
-        num_records = cur.execute('SELECT * FROM commanderstable')
-        mysql.connection.commit()
-        cur.close()
-        assert 6 == num_records
-
 def test_create_ctable():
     with app.app_context():
         cur = mysql.connection.cursor()
@@ -69,5 +61,34 @@ def test_delete_ctable():
         start_records = cur.execute('SELECT * FROM commanderstable')
         cur.execute('DELETE FROM commanderstable WHERE lastname = "Holder"')
         end_records = cur.execute('SELECT * FROM commanderstable')
+        cur.close()
+        assert end_records + 1 == start_records
+
+def test_create_btable():
+    with app.app_context():
+        cur = mysql.connection.cursor()
+        start_records = cur.execute('SELECT * FROM battlestable')
+        cur.execute('INSERT INTO battlestable (location,startdate,enddate,bcad,type) VALUES("Placeholder","2000-1-1",,"2000-1-2","AD","Land")')
+        end_records = cur.execute('SELECT * FROM commanderstable')
+        cur.close()
+        assert end_records - 1 == start_records
+
+def test_update_btable():
+    with app.app_context():
+        cur = mysql.connection.cursor()
+        cur.execute('INSERT INTO battlestable (location,startdate,enddate,bcad,type) VALUES("Placeholder","2000-1-1",,"2000-1-2","AD","Land")')
+        cur.execute('SELECT location FROM battlestable')
+        cur.execute('UPDATE battlestable SET type = "Siege"  WHERE location = "Placeholder"')    
+        cur.execute('SELECT type FROM battlestable WHERE location="Placeholder"')
+        placeholder_notes = cur.fetchall()
+        assert placeholder_notes[0][0] == 'Siege'
+
+def test_delete_btable():
+    with app.app_context():
+        cur = mysql.connection.cursor()
+        cur.execute('INSERT INTO battlestable (location,startdate,enddate,bcad,type) VALUES("Placeholder","2000-1-1",,"2000-1-2","AD","Land")')
+        start_records = cur.execute('SELECT * FROM battlestable')
+        cur.execute('DELETE FROM commanderstable WHERE location = "Placeholder"')
+        end_records = cur.execute('SELECT * FROM battlestable')
         cur.close()
         assert end_records + 1 == start_records
