@@ -41,4 +41,13 @@ def test_select_ctable():
         num_records = cur.execute('SELECT * FROM commanderstable')
         mysql.connection.commit()
         cur.close()
-        assert 7 == num_records
+        assert 6 == num_records
+
+def test_create_ctable():
+    with app.app_context():
+        cur = mysql.connection.cursor()
+        start_records = cur.execute('SELECT * FROM commanderstable')
+        cur.execute('INSERT INTO commanderstable (firstname,lastname,nationality,date_of_birth,bcad,notes) VALUES("Place","Holder","American",2000-1-1,"AD","Lorem Ipsum")')
+        end_records = cur.execute('SELECT * FROM commanderstable')
+        cur.close()
+        assert end_records - 1 == start_records
