@@ -52,7 +52,7 @@ def test_create_ctable():
         cur.close()
         assert end_records - 1 == start_records
 
-def test_update_ctable():
+# def test_update_ctable():
     with app.app_context():
         cur = mysql.connection.cursor()
         cur.execute('SELECT firstname,lastname FROM commanderstable')
@@ -63,7 +63,7 @@ def test_update_ctable():
 
         assert placeholder_notes == 'Placeholder'
 
-def test_delete_ctable():
+# def test_delete_ctable():
     with app.app_context():
         cur = mysql.connection.cursor()
         start_records = cur.execute('SELECT * FROM commanderstable')
