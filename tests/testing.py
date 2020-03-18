@@ -53,21 +53,18 @@ def test_create_ctable():
         assert end_records - 1 == start_records
 
 # def test_update_ctable():
-    with app.app_context():
-        cur = mysql.connection.cursor()
-        cur.execute('SELECT firstname,lastname FROM commanderstable')
-
-        cur.execute('UPDATE commanderstable SET notes = "Placeholder"  WHERE firstname = "Place" AND lastname = "Holder"')
-        
-        placeholder_notes = cur.execute('SELECT notes FROM commanderstable WHERE firstname="Place" AND lastname="Holder"')
-
-        assert placeholder_notes == 'Placeholder'
+#    with app.app_context():
+#        cur = mysql.connection.cursor()
+ #       cur.execute('SELECT firstname,lastname FROM commanderstable')
+ #       cur.execute('UPDATE commanderstable SET notes = "Placeholder"  WHERE firstname = "Place" AND lastname = "Holder"')    
+   #     placeholder_notes = cur.execute('SELECT notes FROM commanderstable WHERE firstname="Place" AND lastname="Holder"')
+ #       assert placeholder_notes == 'Placeholder'
 
 # def test_delete_ctable():
-    with app.app_context():
-        cur = mysql.connection.cursor()
-        start_records = cur.execute('SELECT * FROM commanderstable')
-        cur.execute('DELETE FROM commanderstable WHERE lastname = "Holder"')
-        end_records = cur.execute('SELECT * FROM commanderstable')
-        cur.close()
-        assert end_records + 1 == start_records
+#    with app.app_context():
+ #       cur = mysql.connection.cursor()
+  #      start_records = cur.execute('SELECT * FROM commanderstable')
+   #     cur.execute('DELETE FROM commanderstable WHERE lastname = "Holder"')
+    ##    end_records = cur.execute('SELECT * FROM commanderstable')
+      #  cur.close()
+       # assert end_records + 1 == start_records
