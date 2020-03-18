@@ -1,6 +1,7 @@
 import urllib3
 from flask import Flask, render_template, request
 from flask_mysqldb import MySQL
+app = Flask(__name__)
 mysql= MySQL(app)
 
 def test_homepage():
@@ -27,11 +28,6 @@ def test_relationspage():
     http = urllib3.PoolManager()
     r = http.request('GET','http://35.246.9.150:5000/event')
     assert 200 == r.status
-
-#def test_ghostpage():
-#    http = urllib3.PoolManager()
- #   r = http.request('GET','http://35.246.9.150:5000/ghost')
- #   assert 200 == r.status
 
 def test_select_ctable():
     with app.app_context():
