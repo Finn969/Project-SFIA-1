@@ -21,7 +21,13 @@ p {font-family: Garamond;}
         Type<br> <select id="Type" name="Type">
             <option value="Land">Land</option>
             <option value="Naval">Naval</option>
+            <option value="Aerial">Aerial</option>
             <option value="Seige">Seige</option>
+          </select> <br>
+        Result<br> <select id="Result" name="Result">
+            <option value="Decisive">Decisive</option>
+            <option value="Indecisive">Indecisive</option>
+            <option value="Pyrrhic">Pyrrhic</option>
           </select> <br>
           <input type = "submit">
     </form>
@@ -34,6 +40,7 @@ p {font-family: Garamond;}
             <td>{{item[3]}}</td>
             <td>{{item[4]}},</td>
             <td> it was a {{item[5]}} battle.</td>
+            <td> it was a {{item[6]}} victory for ...</td>
             <br><br>
         </tr>
         {% endfor %}

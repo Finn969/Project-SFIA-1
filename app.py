@@ -43,9 +43,10 @@ def battlespage():
          end = details['End']
          BCAD = details['bcad']
          type = details['Type']
-         cur.execute("INSERT INTO battlestable(location,startdate,enddate,bcad,type) VALUES(%s,%s,%s,%s,%s)", (Location,start,end,BCAD,type))
+         result = details['Result']
+         cur.execute("INSERT INTO battlestable(location,startdate,enddate,bcad,type,result) VALUES(%s,%s,%s,%s,%s,%s)", (Location,start,end,BCAD,type,result))
          mysql.connection.commit()
-    cur.execute('''SELECT location,DATE_FORMAT(startdate, '%D %M %Y'),bcad,DATE_FORMAT(startdate, '%D %M %Y'),bcad,type FROM battlestable''')
+    cur.execute('''SELECT location,DATE_FORMAT(startdate, '%D %M %Y'),bcad,DATE_FORMAT(startdate, '%D %M %Y'),bcad,type,result FROM battlestable''')
     rows = cur.fetchall()
     mysql.connection.commit()
     cur.close()
