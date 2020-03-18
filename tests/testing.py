@@ -41,4 +41,4 @@ def test_select_ctable():
         num_records = cur.execute('SELECT * FROM commanderstable')
         mysql.connection.commit()
         cur.close()
-        assert 6 == num_records
+        assert 7 == num_records
