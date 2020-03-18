@@ -60,7 +60,7 @@ def test_update_ctable():
         cur.execute('UPDATE commanderstable SET notes = "Placeholder"  WHERE firstname = "Place" AND lastname = "Holder"')    
         cur.execute('SELECT notes FROM commanderstable WHERE firstname="Place" AND lastname="Holder"')
         placeholder_notes = cur.fetchall()
-        assert placeholder_notes[0] == 'Placeholder'
+        assert placeholder_notes[0][0] == 'Placeholder'
 
 def test_delete_ctable():
     with app.app_context():
