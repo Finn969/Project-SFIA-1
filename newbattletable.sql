@@ -24,3 +24,4 @@ CREATE TABLE armiestable (
     FOREIGN KEY(commanderf) REFERENCES commanderstable(firstname),
     FOREIGN KEY(commanders) REFERENCES commanderstable(lastname)     
 );
+

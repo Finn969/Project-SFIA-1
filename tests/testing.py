@@ -69,7 +69,7 @@ def test_create_btable():
         cur = mysql.connection.cursor()
         start_records = cur.execute('SELECT * FROM battlestable')
         cur.execute('INSERT INTO battlestable (location,startdate,enddate,bcad,type) VALUES("Placeholder","2000-1-1","2000-1-2","AD","Land")')
-        end_records = cur.execute('SELECT * FROM commanderstable')
+        end_records = cur.execute('SELECT * FROM battlestable')
         cur.close()
         assert end_records - 1 == start_records
 
@@ -88,7 +88,7 @@ def test_delete_btable():
         cur = mysql.connection.cursor()
         cur.execute('INSERT INTO battlestable (location,startdate,enddate,bcad,type) VALUES("Placeholder","2000-1-1","2000-1-2","AD","Land")')
         start_records = cur.execute('SELECT * FROM battlestable')
-        cur.execute('DELETE FROM commanderstable WHERE location = "Placeholder"')
+        cur.execute('DELETE FROM battlestable WHERE location = "Placeholder"')
         end_records = cur.execute('SELECT * FROM battlestable')
         cur.close()
         assert end_records + 1 == start_records
