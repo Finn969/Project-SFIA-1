@@ -9,7 +9,6 @@ app.config["MYSQL_PASSWORD"] = os.environ['MYSQLPASS']
 app.config["MYSQL_DB"] = os.environ['MYSQLDB']
 mysql= MySQL(app)
 
-#Test
 
 @app.route('/', methods=['GET', 'POST'])
 def homepage():
@@ -73,7 +72,7 @@ def delete_commander():
 @app.route('/delete/battle', methods=['GET', 'POST'])
 def delete_battle():
     remove_name = request.form["RemoveThis"]
-
+    cur = mysql.connection.cursor()
     cur.execute('DELETE FROM battlestable WHERE location LIKE %s',(remove_name,))
     cur.execute('''SELECT location,DATE_FORMAT(startdate, '%D %M %Y'),bcad,DATE_FORMAT(startdate, '%D %M %Y'),bcad,type FROM battlestable''')
     rows = cur.fetchall()
