@@ -66,7 +66,7 @@ def battlespage():
 def battlestable():
     thisbattle = request.form["ThisBattle"].title()
     cur = mysql.connection.cursor()
-    neutralinfo = cur.execute('''SELECT location,war,DATE_FORMAT(startdate, "%D %M %Y"),DATE_FORMAT(enddate, "%D %M %Y"),bcad,type,result FROM battlestable WHERE location = %s ''',[thisbattle])
+    neutralinfo = cur.execute('''SELECT location,war,startdate,enddate,bcad,type,result FROM battlestable WHERE location = %s ''',[thisbattle])
     winnerinfo = cur.execute('SELECT commanderstable.firstname,commanderstable.lastname,commanderstable.nationality,armiestable.strength,battlestable.winner FROM armiestable, commanderstable, battlestable WHERE battlestable.winner = armiestable.armyID AND armiestable.commanderID = commanderstable.ID AND battlestable.location = %s',[thisbattle])
     loserinfo = cur.execute('SELECT commanderstable.firstname,commanderstable.lastname,commanderstable.nationality,armiestable.strength,battlestable.loser FROM armiestable, commanderstable, battlestable WHERE battlestable.loser = armiestable.armyID AND armiestable.commanderID = commanderstable.ID AND battlestable.location = %s',[thisbattle])
     mysql.connection.commit()
