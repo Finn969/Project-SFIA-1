@@ -71,6 +71,6 @@ p {font-family: Garamond;}
         See more details of a battle<br>
         <form action = '/battlestable'>
         Battle name<br><input type = "text" name = "thisbattle" /> <br>
-        <button type = "submit" value = "{{item[0]}}" action = "{{ url_for('battlestable') }}"/>Go</button>
+        <button type = "submit" action = "{{ url_for('battlestable') }}"/>Go</button>
        </form>
 {% endblock %}
