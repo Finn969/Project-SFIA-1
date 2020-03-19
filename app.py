@@ -62,7 +62,7 @@ def battlespage():
         battleinfo.append(row)
     return render_template('battlespage.html', battleinfo=battleinfo)
 
-@app.route('/battlestable', methods=['GET'])
+@app.route('/battlestable', methods=['GET','POST'])
 def battlestable():
     thisbattle = request.form["ThisBattle"].title()
     cur = mysql.connection.cursor()
