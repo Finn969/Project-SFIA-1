@@ -29,8 +29,18 @@ p {font-family: Garamond;}
             <option value="Indecisive">Indecisive</option>
             <option value="Pyrrhic">Pyrrhic</option>
           </select> <br>
-          <input type = "submit">
-    </form>
+    <br>
+      <H2>What armies were present at this battle?</H2> <br>
+      <h3>Victorious army</h3>
+      Commander (surname)<br> <input type = "text" name= "wCommander" /> <br>
+      Strength<br> <input type = "number" name = "wStrong" /> <br>
+      <h3>Defeated army</h3>
+      Commander (surname)<br>  <input type = "text" name = "lCommander" /> <br>
+      Strength<br> <input type = "number" name = "lStrong" /> <br>
+        <input type = "submit" action = "{{ url_for('create-army') }}">
+  </form>
+  <br><br>
+
         <H2>List of Battles</H2>
         {% for item in battleinfo %}
         <tr>
@@ -40,7 +50,11 @@ p {font-family: Garamond;}
             <td>{{item[3]}}</td>
             <td>{{item[4]}},</td>
             <td> it was a {{item[5]}} battle.</td>
-            <td> It was a {{item[6]}} victory for ...</td>
+            <td> It was a {{item[6]}} victory for </td>
+            <td> {{item[10]}}, commanded by</td>
+            <td>{{item[8]}}</td>
+            <td>{{item[9]}},</td>
+            <td>with an army of {{item[7]}} men.</td>
             <br><br>
         </tr>
         {% endfor %}
