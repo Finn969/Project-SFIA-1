@@ -57,11 +57,7 @@ p {font-family: Garamond;}
             <td>{{item[7]}}</td>
             <td>{{item[8]}},</td>
             <td>with an army of {{item[6]}} men.</td>
-            <br>
-            See more details of this battle<br>
-            <form action = '/battlestable'>
-            <button type = "submit" name = "thisbattle" value = "{{item[0]}}" action = "{{ url_for('battlestable') }}"/>Go</button>
-           </form>
+            
             <br><br>
         </tr>
         {% endfor %}
@@ -71,4 +67,10 @@ p {font-family: Garamond;}
             <button type = "submit" action = "{{ url_for('delete_commander') }}"/>Delete</button>
         </form>
         <br>
+        <br>
+        See more details of a battle<br>
+        <form action = '/battlestable'>
+        Battle name<br><input type = "text" name = "thisbattle" /> <br>
+        <button type = "submit" value = "{{item[0]}}" action = "{{ url_for('battlestable') }}"/>Go</button>
+       </form>
 {% endblock %}
