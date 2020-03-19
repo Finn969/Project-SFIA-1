@@ -59,8 +59,9 @@ p {font-family: Garamond;}
             <td>with an army of {{item[6]}} men.</td>
             <br>
             See more details of this battle<br>
+            <form action = '/battlestable'>
             <button type = "submit" name = "thisbattle" value = "{{item[0]}}" action = "{{ url_for('battlestable') }}"/>Go</button>
-            <a class="nav-link" name = "thisbattle" value = "{{item[0]}}" href="/battlestable">Details</a>
+           </form>
             <br><br>
         </tr>
         {% endfor %}
