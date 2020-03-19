@@ -64,7 +64,7 @@ def battlespage():
 
 @app.route('/battlestable', methods=['GET'])
 def battlestable():
-    thisbattle = request.form["thisbattle"]
+    thisbattle = request.form["Thisbattle"]
     cur = mysql.connection.cursor()
     neutralinfo = cur.execute('''SELECT location,war,DATE_FORMAT(startdate, '%D %M %Y'),DATE_FORMAT(enddate, '%D %M %Y'),bcad,type,result FROM battlestable WHERE location = %s''',(thisbattle))
     winnerinfo = cur.execute('SELECT commanderstable.firstname,commanderstable.lastname,commanderstable.nationality,armiestable.strength FROM armiestable, commanderstable WHERE battlestable.winner = armiestable.armyID AND armiestable.commanderID = commanderstable.ID AND battlestable.location = %s',(thisbattle))
