@@ -51,7 +51,7 @@ def battlespage():
 
          cur.execute("INSERT INTO armiestable(strength,commanderID) VALUES(%s,(SELECT ID FROM commanderstable WHERE lastname = %s))",(wStrength,wCommand))
          cur.execute("INSERT INTO armiestable(strength,commanderID) VALUES(%s,(SELECT ID FROM commanderstable WHERE lastname = %s))",(lStrength,lCommand))
-         cur.execute("INSERT INTO battlestable(location,startdate,enddate,bcad,type,result,winner,loser) VALUES(%s,%s,%s,%s,%s,%s,(SELECT armyID FROM armiestable WHERE strength = %s),(SELECT armyID FROM armiestable WHERE strength = %s))", (Location,start,end,BCAD,type,result,wStrength,lStrength))
+         cur.execute("INSERT INTO battlestable(location,startdate,enddate,battlestable.bcad,type,result,winner,loser) VALUES(%s,%s,%s,%s,%s,%s,(SELECT armyID FROM armiestable WHERE strength = %s),(SELECT armyID FROM armiestable WHERE strength = %s))", (Location,start,end,BCAD,type,result,wStrength,lStrength))
          mysql.connection.commit()
     cur.execute('''SELECT location,DATE_FORMAT(startdate, '%D %M %Y'),DATE_FORMAT(enddate, '%D %M %Y'),bcad,type,result,armiestable.strength,commanderstable.firstname,commanderstable.lastname,commanderstable.nationality FROM battlestable,armiestable,commanderstable WHERE battlestable.winner = armiestable.armyID AND armiestable.commanderID = commanderstable.ID''')
     rows = cur.fetchall()
