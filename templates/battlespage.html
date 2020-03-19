@@ -69,7 +69,7 @@ p {font-family: Garamond;}
         <br>
         <br>
         <h3>See more details of a battle</h3><br>
-        <form action = '/battlestable' method='POST'>
+        <form action = '/battlestable' method='GET'>
         Battle name<br><input type = "text" name = "Thisbattle" /> <br>
         <button type = "submit" action = "{{ url_for('battlestable') }}"/>Go</button>
        </form>
