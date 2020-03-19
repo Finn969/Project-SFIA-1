@@ -65,6 +65,7 @@ def battlespage():
 @app.route('/battlestable', methods=['GET','POST'])
 def battlestable():
     thisbattle = request.form["ThisBattle"].title()
+    print (thisbattle)
     cur = mysql.connection.cursor()
     neutralinfo = cur.execute('''SELECT location,war,startdate,enddate,bcad,type,result FROM battlestable WHERE location = %s ''',[thisbattle])
     winnerinfo = cur.execute('SELECT commanderstable.firstname,commanderstable.lastname,commanderstable.nationality,armiestable.strength,battlestable.winner FROM armiestable, commanderstable, battlestable WHERE battlestable.winner = armiestable.armyID AND armiestable.commanderID = commanderstable.ID AND battlestable.location = %s',[thisbattle])
@@ -72,6 +73,7 @@ def battlestable():
     mysql.connection.commit()
     cur.close()
     binfo = neutralinfo + winnerinfo + loserinfo
+    print (binfo)
     return render_template('battletable.html',binfo = binfo)
 
 @app.route('/delete/commander', methods=['GET', 'POST'])
