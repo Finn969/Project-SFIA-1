@@ -29,6 +29,7 @@ p {font-family: Garamond;}
             <option value="Indecisive">Indecisive</option>
             <option value="Pyrrhic">Pyrrhic</option>
           </select> <br>
+          What war was this battle a part of?<br> <input type = "text" name= "WAR" /> <br>
     <br>
       <H2>What armies were present at this battle?</H2> <br>
       <h3>Victorious army</h3>
@@ -44,7 +45,8 @@ p {font-family: Garamond;}
         <H2>List of Battles</H2>
         {% for item in battleinfo %}
         <tr>
-            <td>The Battle of {{item[0]}} lasted from the </td>
+            <td>The Battle of {{item[0]}} was part of the</td>
+            <td>{{item[10]}}, it lasted from the </td>
             <td>{{item[1]}}</td>
             <td>{{item[3]}} to the</td>
             <td>{{item[2]}}</td>
@@ -55,6 +57,9 @@ p {font-family: Garamond;}
             <td>{{item[7]}}</td>
             <td>{{item[8]}},</td>
             <td>with an army of {{item[6]}} men.</td>
+            <br>
+            See more details of this battle<br>
+            <button type = "submit" name = "thisbattle" value = "{{item[0]}}"" action = "{{ url_for('battlestable') }}"/>Go</button>
             <br><br>
         </tr>
         {% endfor %}

@@ -48,12 +48,12 @@ def battlespage():
          lCommand = details['lCommander']
          wStrength = details['wStrong']
          lStrength = details['lStrong']
-
+         war = details['WAR']
          cur.execute("INSERT INTO armiestable(strength,commanderID) VALUES(%s,(SELECT ID FROM commanderstable WHERE lastname = %s))",(wStrength,wCommand))
          cur.execute("INSERT INTO armiestable(strength,commanderID) VALUES(%s,(SELECT ID FROM commanderstable WHERE lastname = %s))",(lStrength,lCommand))
-         cur.execute("INSERT INTO battlestable(location,startdate,enddate,bcad,type,result,winner,loser) VALUES(%s,%s,%s,%s,%s,%s,(SELECT armyID FROM armiestable WHERE commanderID =(SELECT ID FROM commanderstable WHERE lastname =%s)),(SELECT armyID FROM armiestable WHERE commanderID =(SELECT ID FROM commanderstable WHERE lastname =%s)))", (Location,start,end,BCAD,type,result,wCommand,lCommand))
+         cur.execute("INSERT INTO battlestable(location,startdate,enddate,bcad,type,result,winner,loser,war) VALUES(%s,%s,%s,%s,%s,%s,(SELECT armyID FROM armiestable WHERE commanderID =(SELECT ID FROM commanderstable WHERE lastname =%s)),(SELECT armyID FROM armiestable WHERE commanderID =(SELECT ID FROM commanderstable WHERE lastname =%s)),%s)", (Location,start,end,BCAD,type,result,wCommand,lCommand,war))
          mysql.connection.commit()
-    cur.execute('''SELECT location,DATE_FORMAT(startdate, '%D %M %Y'),DATE_FORMAT(enddate, '%D %M %Y'),battlestable.bcad,type,result,armiestable.strength,commanderstable.firstname,commanderstable.lastname,commanderstable.nationality FROM battlestable,armiestable,commanderstable WHERE battlestable.winner = armiestable.armyID AND armiestable.commanderID = commanderstable.ID''')
+    cur.execute('''SELECT location,DATE_FORMAT(startdate, '%D %M %Y'),DATE_FORMAT(enddate, '%D %M %Y'),battlestable.bcad,type,result,armiestable.strength,commanderstable.firstname,commanderstable.lastname,commanderstable.nationality,war FROM battlestable,armiestable,commanderstable WHERE battlestable.winner = armiestable.armyID AND armiestable.commanderID = commanderstable.ID''')
     rows = cur.fetchall()
     mysql.connection.commit()
     cur.close()
@@ -62,6 +62,17 @@ def battlespage():
         battleinfo.append(row)
     return render_template('battlespage.html', battleinfo=battleinfo)
 
+@app.route('/battlestable', methods=['GET'])
+def battlestable():
+    thisbattle = request.form["thisbattle"]
+    cur = mysql.connection.cursor()
+    neutralinfo = cur.execute('''SELECT location,war,DATE_FORMAT(startdate, '%D %M %Y'),DATE_FORMAT(enddate, '%D %M %Y'),bcad,type,result FROM battlestable WHERE location = %s''',(thisbattle))
+    winnerinfo = cur.execute('SELECT commanderstable.firstname,commanderstable.lastname,commanderstable.nationality,armiestable.strength FROM armiestable, commanderstable WHERE battlestable.winner = armiestable.armyID AND armiestable.commanderID = commanderstable.ID AND battlestable.location = %s',(thisbattle))
+    loserinfo = cur.execute('SELECT commanderstable.firstname,commanderstable.lastname,commanderstable.nationality,armiestable.strength FROM armiestable, commanderstable WHERE battlestable.loser = armiestable.armyID AND armiestable.commanderID = commanderstable.ID AND battlestable.location = %s',(thisbattle))
+    mysql.connection.commit()
+    cur.close()
+    binfo = neutralinfo + winnerinfo + loserinfo
+    return render_template('battletable.html',binfo = binfo)
 
 @app.route('/delete/commander', methods=['GET', 'POST'])
 def delete_commander():

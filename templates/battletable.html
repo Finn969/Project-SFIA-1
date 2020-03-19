@@ -31,29 +31,31 @@ tr:nth-child(even) {background-color: beige;}
         <td>End date: {{binfo[3]}}{{binfo[4]}}</td>
       </tr>
       <tr>
-        <td>Result: {{binfo[5]}} victory for {{binfo[7]}}</td>
+        <td>Result: {{binfo[6]}} victory for {{binfo[9]}}</td>
       </tr>
       <tr>
-        <td>Type: {{binfo[6]}}</td>
+        <td>Type: {{binfo[5]}}</td>
       </tr>
       <tr>
         <th>Belligerents</th>
       </tr>
       <tr>
-          <td>{{binfo[7]}}</td>
-          <td>{{binfo[10]}} </td>
+          <td>{{binfo[9]}}</td>
+          <td>{{binfo[13]}} </td>
       </tr>
       <tr>
         <th>Commanders</th>
       </tr>
       <tr>
-          <td>{{binfo[8]}}</td>
-          <td>{{binfo[11]}} </td>
+          <td>{{binfo[7]}}{{binfo[8]}}</td>
+          <td>{{binfo[11]}{{binfo[12]}} </td>
       </tr>
       <th>Strength</th>
     </tr>
     <tr>
-        <td>{{binfo[9]}}</td>
-        <td>{{binfo[12]}} </td>
+        <td>{{binfo[10]}}</td>
+        <td>{{binfo[14]}} </td>
     </tr>
 </table>
+<br>
+{% endblock %}
