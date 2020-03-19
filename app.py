@@ -67,8 +67,8 @@ def battlestable():
     thisbattle = 'Hastings'
     cur = mysql.connection.cursor()
     neutralinfo = cur.execute('''SELECT location,war,DATE_FORMAT(startdate, "%D %M %Y"),DATE_FORMAT(enddate, "%D %M %Y"),bcad,type,result FROM battlestable WHERE location = "Hastings" ''')
-    winnerinfo = cur.execute('SELECT commanderstable.firstname,commanderstable.lastname,commanderstable.nationality,armiestable.strength FROM armiestable, commanderstable WHERE battlestable.winner = armiestable.armyID AND armiestable.commanderID = commanderstable.ID AND battlestable.location = %s',(thisbattle))
-    loserinfo = cur.execute('SELECT commanderstable.firstname,commanderstable.lastname,commanderstable.nationality,armiestable.strength FROM armiestable, commanderstable WHERE battlestable.loser = armiestable.armyID AND armiestable.commanderID = commanderstable.ID AND battlestable.location = %s',(thisbattle))
+    winnerinfo = cur.execute('SELECT commanderstable.firstname,commanderstable.lastname,commanderstable.nationality,armiestable.strength FROM armiestable, commanderstable WHERE battlestable.winner = armiestable.armyID AND armiestable.commanderID = commanderstable.ID AND battlestable.location = %s',[thisbattle])
+    loserinfo = cur.execute('SELECT commanderstable.firstname,commanderstable.lastname,commanderstable.nationality,armiestable.strength FROM armiestable, commanderstable WHERE battlestable.loser = armiestable.armyID AND armiestable.commanderID = commanderstable.ID AND battlestable.location = %s',[thisbattle])
     mysql.connection.commit()
     cur.close()
     binfo = neutralinfo + winnerinfo + loserinfo
