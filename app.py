@@ -67,13 +67,21 @@ def battlestable():
     thisbattle = request.form["ThisBattle"].title()
     print (thisbattle)
     cur = mysql.connection.cursor()
-    neutralinfo = cur.execute('''SELECT location,war,startdate,enddate,bcad,type,result FROM battlestable WHERE location = %s ''',[thisbattle])
-    winnerinfo = cur.execute('SELECT commanderstable.firstname,commanderstable.lastname,commanderstable.nationality,armiestable.strength,battlestable.winner FROM armiestable, commanderstable, battlestable WHERE battlestable.winner = armiestable.armyID AND armiestable.commanderID = commanderstable.ID AND battlestable.location = %s',[thisbattle])
-    loserinfo = cur.execute('SELECT commanderstable.firstname,commanderstable.lastname,commanderstable.nationality,armiestable.strength,battlestable.loser FROM armiestable, commanderstable, battlestable WHERE battlestable.loser = armiestable.armyID AND armiestable.commanderID = commanderstable.ID AND battlestable.location = %s',[thisbattle])
+    cur.execute('''SELECT location,war,startdate,enddate,bcad,type,result FROM battlestable WHERE location = %s ''',[thisbattle])
+    neutralinfo = cur.fetchall()
     mysql.connection.commit()
+
+    cur.execute('SELECT commanderstable.firstname,commanderstable.lastname,commanderstable.nationality,armiestable.strength,battlestable.winner FROM armiestable, commanderstable, battlestable WHERE battlestable.winner = armiestable.armyID AND armiestable.commanderID = commanderstable.ID AND battlestable.location = %s',[thisbattle])
+    winnerinfo = cur.fetchall()
+    mysql.connection.commit()
+
+    cur.execute('SELECT commanderstable.firstname,commanderstable.lastname,commanderstable.nationality,armiestable.strength,battlestable.loser FROM armiestable, commanderstable, battlestable WHERE battlestable.loser = armiestable.armyID AND armiestable.commanderID = commanderstable.ID AND battlestable.location = %s',[thisbattle])
+    loserinfo = cur.fetchall()
+    mysql.connection.commit()
+
     cur.close()
     binfo = neutralinfo + winnerinfo + loserinfo
-    print (binfo)
+    print (neutralinfo,winnerinfo,loserinfo,binfo)
     return render_template('battletable.html',binfo = binfo)
 
 @app.route('/delete/commander', methods=['GET', 'POST'])

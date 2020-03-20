@@ -18,43 +18,43 @@ tr:nth-child(even) {background-color: beige;}
     {% endblock %}
 {%block body%}
 
-<h2>Battle of {{binfo[0]}}</h2>
+<h2>Battle of {{binfo[0][0]}}</h2>
 
 <table>
     <tr>
-        <td>Part of the {{binfo[1]}}</td>
+        <td>Part of the {{binfo[0][1]}}</td>
         </tr>
         <tr>
-        <td>Start date: {{binfo[2]}}{{binfo[4]}}</td>
+        <td>Start date: {{binfo[0][2]}}{{binfo[0][4]}}</td>
       </tr>
       <tr>
-        <td>End date: {{binfo[3]}}{{binfo[4]}}</td>
+        <td>End date: {{binfo[0][3]}}{{binfo[0][4]}}</td>
       </tr>
       <tr>
-        <td>Result: {{binfo[6]}} victory for {{binfo[9]}}</td>
+        <td>Result: {{binfo[0][6]}} victory for {{binfo[9]}}</td>
       </tr>
       <tr>
-        <td>Type: {{binfo[5]}}</td>
+        <td>Type: {{binfo[0][5]}}</td>
       </tr>
       <tr>
         <th>Belligerents</th>
       </tr>
       <tr>
-          <td>{{binfo[9]}}</td>
-          <td>{{binfo[13]}} </td>
+          <td>{{binfo[1][2]}}</td>
+          <td>{{binfo[2][2]}} </td>
       </tr>
       <tr>
         <th>Commanders</th>
       </tr>
       <tr>
-          <td>{{binfo[7]}} {{binfo[8]}}</td>
-          <td>{{binfo[11]}} {{binfo[12]}} </td>
+          <td>{{binfo[1][0]}} {{binfo[1][1]}}</td>
+          <td>{{binfo[2][0]}} {{binfo[2][1]}} </td>
       </tr>
       <th>Strength</th>
     </tr>
     <tr>
-        <td>{{binfo[10]}}</td>
-        <td>{{binfo[14]}} </td>
+        <td>{{binfo[1][3]}}</td>
+        <td>{{binfo[2][3]}} </td>
     </tr>
 </table>
 <br>
