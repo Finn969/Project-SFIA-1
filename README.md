@@ -69,10 +69,52 @@ I followed the set of tasks laid out in the 'Milestones' posted on slack.
 ## Project Architecture
 ---
 I don't know what this will look like yet
-### Entity Relationships
+### Entity Relationships - Initial
 ![picture of the ERD](https://github.com/Finn969/Project-SFIA-1/blob/master/ERD.png)
+
+### Entity Relationships - Final
+![picture of reformed ERD](https://github.com/Finn969/Project-SFIA-1/blob/master/ERDv2.png)
 
 ### Overall Architecture
 I don't know what this will look like yet
 ### Issues Encountered
 Placeholder text
+
+## Design Considerations
+
+### Front End
+
+lorem ipsum
+
+### Back End
+
+lorem ipsum
+
+![Flow chart demonstrating process flow for the mvp page POST request handling stream]()
+
+Example Code:
+
+### UI
+
+lorem ipsum
+
+##Testing
+
+###Pytest
+lorem ipsum
+
+ URL TESTING
+
+DATABASE TESTING
+
+JENKINS REPORT
+coverage
+
+
+## Future Improvements
+
+#### Authors
+
+#### Acknowledgements
+
+
