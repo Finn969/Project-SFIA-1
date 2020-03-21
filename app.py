@@ -134,7 +134,8 @@ def update_battle():
         Uend = details['End']
         UBCAD = details['bcad']
         Utype = details['Type']
-        cur.execute("UPDATE battlestable SET location = %s,startdate = %s,enddate = %s,bcad = %s,type = %s  WHERE location = %s;",(ULocation,Ustart,Uend,UBCAD,Utype,OLocation))
+        Uwar = details['War']
+        cur.execute("UPDATE battlestable SET location = %s,startdate = %s,enddate = %s,bcad = %s,type = %s,war =%s  WHERE location = %s;",(ULocation,Ustart,Uend,UBCAD,Utype,Uwar,OLocation))
         cur.execute('''SELECT location,DATE_FORMAT(startdate, '%D %M %Y'),bcad,DATE_FORMAT(startdate, '%D %M %Y'),bcad,type FROM battlestable''')
         rows = cur.fetchall()
         mysql.connection.commit()
