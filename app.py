@@ -51,7 +51,9 @@ def battlespage():
          war = details['WAR']
          cur.execute("INSERT INTO armiestable(strength,commanderID) VALUES(%s,(SELECT ID FROM commanderstable WHERE lastname = %s))",(wStrength,wCommand))
          cur.execute("INSERT INTO armiestable(strength,commanderID) VALUES(%s,(SELECT ID FROM commanderstable WHERE lastname = %s))",(lStrength,lCommand))
-         cur.execute("INSERT INTO battlestable(location,startdate,enddate,bcad,type,result,winner,loser,war) VALUES(%s,%s,%s,%s,%s,%s,(SELECT armyID FROM armiestable WHERE commanderID =(SELECT ID FROM commanderstable WHERE lastname =%s)),(SELECT armyID FROM armiestable WHERE commanderID =(SELECT ID FROM commanderstable WHERE lastname =%s)),%s)", (Location,start,end,BCAD,type,result,wCommand,lCommand,war))
+        # THIS IS THE PROBLEM
+         cur.execute("INSERT INTO battlestable(location,startdate,enddate,bcad,type,result,winner,loser,war) VALUES(%s,%s,%s,%s,%s,%s,(SELECT armyID FROM armiestable WHERE strength = %s AND commanderID =(SELECT ID FROM commanderstable WHERE lastname =%s)),(SELECT armyID FROM armiestable WHERE strength = %s AND commanderID =(SELECT ID FROM commanderstable WHERE lastname =%s)),%s)", (Location,start,end,BCAD,type,result,wStrength,wCommand,lStrength,lCommand,war))
+         # ABOVE HERE
          mysql.connection.commit()
     cur.execute('''SELECT location,DATE_FORMAT(startdate, '%D %M %Y'),DATE_FORMAT(enddate, '%D %M %Y'),battlestable.bcad,type,result,armiestable.strength,commanderstable.firstname,commanderstable.lastname,commanderstable.nationality,war FROM battlestable,armiestable,commanderstable WHERE battlestable.winner = armiestable.armyID AND armiestable.commanderID = commanderstable.ID''')
     rows = cur.fetchall()
