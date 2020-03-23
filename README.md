@@ -30,6 +30,7 @@ My website would be built around a database of historical battles and generals. 
 
 ## Trello Board
 
+### Initial Board
 ![Initial Board](https://github.com/Finn969/Project-SFIA-1/blob/master/Trello%20Board.png)
 
 My Trello board was primarily based on the Agile concept of a kanban board, but simplified to reflect its usage by a single person. The far left "user stories" column contains the broad features that a user of my application would want to implement. The "backlog" is a formal list of broad tasks which are essential to making the user stories possible. From these broader tasks, more specific tasks that could be completed in a manageable time were identified and listed in the "to do" column. Each task would be added to the "doing" column while in progress, and finally moved to "done" when complete.
@@ -38,11 +39,13 @@ The 'milestones' document posted in the #important slack channel served as a goo
 
 The ordinary items in the User stories list are what is essential to the minimum viable product, whereas the items labelled "STRETCH" were considered as possible additions.
 
+### Final Board
 ![Final Board](https://github.com/Finn969/Project-SFIA-1/blob/master/Trello%20End.png)
 
 ## Risk Assessment
+---
 
-Risk|Description|Hazard|Likelihood|Impact|Solution|
+|Risk|Description|Hazard|Likelihood|Impact|Solution|
 |---|---|---|---|---|---|---|
 Running out of time.|Project left unfinished due to poor time management.|Project may be incomplete and marks lost as a result.|2|5|Manage time and plan objectives through use of Kanban board, ensure work is completed early.|
 Data breach on workstation.|Work station is compromised.|Severe progress loss.|1|5|Change passwords on workstation, keep instances off when not in use.|
@@ -57,10 +60,12 @@ Likelihood and Impact are rated on a scale from 1 to 5.
 
 My initial plan was built to be rather simple, conatining two main tables to contain battles and generals, with a minor third table which establishes relationships between them, given that pure many-to-many relationships are difficult to implement.
 
+### Initial ERD
 ![Initial ERD](https://github.com/Finn969/Project-SFIA-1/blob/master/ERD.png)
 
 I was able to fully complete this structure with some time left over. While my initially planned structure satisfied the MVP, I chose to attempt to satisfy my initally set stretch goals:
 
+### Final ERD
 ![Final ERD](https://github.com/Finn969/Project-SFIA-1/blob/master/ERDv2.png)
 
 My final structure aimed to show more complex relations: the winner and loser of each battle. This was achieved by inserting additional foreign keys into the battle table, and inserting a new minor table for armies.
@@ -73,13 +78,27 @@ Database testing runs CRUD functions on each table with placeholder values, test
 
 This testing file is called by Jenkins during each build, and coverage is used to generate a report on how many of the tests are successful.
 
-Insert a screenshot of Jenkins test report here.
+### Test Report
+![Test Report](https://github.com/Finn969/Project-SFIA-1/blob/master/ERD.png)
 
 ## Deployment
 
-Insert Diagram once completed here
+### Pipeline Diagram
+![Pipeline](https://github.com/Finn969/Project-SFIA-1/blob/master/Pipeline.png)
+
+New code would be written on a local machine accessing a GCP compute engine via SSH in VScode. This development environment would then be regularly pushed to a github repository, used to version control the software. A webhook was established between my github repository and my Jenkins server, which would automatically detect any new commits to the repo, and undergo the build/deployment process of the app as a service. The app would be able to directly interact with the MySQL server. 
 
 ## Demonstration of Application
+
+### Homepage - List of Generals
+
+### List of Battles
+
+### Table of Battle details
+
+### Update pages
+
+### Assignments page (defunct)
 
 ## Retrospective
 
