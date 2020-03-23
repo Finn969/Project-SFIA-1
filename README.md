@@ -120,7 +120,7 @@ New code would be written on a local machine accessing a GCP compute engine via 
 
 ## Retrospective
 
-While I am pleased with the outcome of the project, and satisfied with the skills I have learned, there are some areas I feel should be improved for my next project.
+While I am pleased with the outcome of the project, and satisfied with the skills I have learned, there are some areas I feel should be improved for my next project:
 
 ..* While I did occasionally create additional branches for my git repo, I underutilised the branch model, and usually directly committed to the master branch.
 
