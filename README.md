@@ -10,19 +10,19 @@ methodologies and technologies that encapsulate all core modules covered during 
 
 To break this down further:
 
-..* CRUD stands for Create, Read, Update, Delete. These are to be the primary interactions between my application and my database.
+* CRUD stands for Create, Read, Update, Delete. These are to be the primary interactions between my application and my database.
 
-..* The main supporting tools, methdodologies and technologies learned through my training are: Agile techniques, MySQL databases, Python programming, Flask applicaitons and Jenkins deployment.
+* The main supporting tools, methdodologies and technologies learned through my training are: Agile techniques, MySQL databases, Python programming, Flask applicaitons and Jenkins deployment.
 
 Further requirements included:
 
-..* A Trello Board featuring user stories, use cases and tasks to do.
+* A Trello Board featuring user stories, use cases and tasks to do.
 
-..* A relational database conatining at least two tables with a relationship between them.
+* A relational database conatining at least two tables with a relationship between them.
 
-..* Test suites for the application, with automated tests for validation, and automatically generated reports.
+* Test suites for the application, with automated tests for validation, and automatically generated reports.
 
-..* Code integrated within a feature-branch version control system, built through a CI server and deployed to a cloud-based VM.
+* Code integrated within a feature-branch version control system, built through a CI server and deployed to a cloud-based VM.
 
 ### My Proposal
 
@@ -122,11 +122,11 @@ New code would be written on a local machine accessing a GCP compute engine via 
 
 While I am pleased with the outcome of the project, and satisfied with the skills I have learned, there are some areas I feel should be improved for my next project:
 
-..* While I did occasionally create additional branches for my git repo, I underutilised the branch model, and usually directly committed to the master branch.
+* While I did occasionally create additional branches for my git repo, I underutilised the branch model, and usually directly committed to the master branch.
 
-..* I did not update the Trello Board particularly frequently.
+* I did not update the Trello Board particularly frequently.
 
-..* My second structure for my database is, on reflection, overly complicated, and would function well without the armiestable.
+* My second structure for my database is, on reflection, overly complicated, and would function well without the armiestable.
 
 In summary, I am content with my progress here, but wise not to repeat my mistakes.
 
