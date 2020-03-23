@@ -47,12 +47,12 @@ The ordinary items in the User stories list are what is essential to the minimum
 
 |Risk|Description|Hazard|Likelihood|Impact|Solution|
 |---|---|---|---|---|---|---|
-Running out of time.|Project left unfinished due to poor time management.|Project may be incomplete and marks lost as a result.|2|5|Manage time and plan objectives through use of Kanban board, ensure work is completed early.|
+|Running out of time.|Project left unfinished due to poor time management.|Project may be incomplete and marks lost as a result.|2|5|Manage time and plan objectives through use of Kanban board, ensure work is completed early.|
 Data breach on workstation.|Work station is compromised.|Severe progress loss.|1|5|Change passwords on workstation, keep instances off when not in use.|
-Depleted GCP credit.|An instance is left running, or an account breach enables the resources on the account to be drained.|Databases unable to be access|1|5|Continue monitoring GCP usage. Copy databases offline as final backup.|
-Database security A GCP server is breached.|Data potentially lost or destroyed|2|5|Ensure passwords are secure, backup code where possible.|
-Health problem: Injury|I suffer an injury due to an accident or physical attack.|Potentially become unable to complete the project|1|5|Avoid situations with risk of injury.|
-Health problem: Disease|I catch a serious infection|Potentially become unable to complete the project|2|5|Ensure good hygene and cleanliness (Note: this table was written prior to the COVID-19 Epidemic)|
+|Depleted GCP credit.|An instance is left running, or an account breach enables the resources on the account to be drained.|Databases unable to be access|1|5|Continue monitoring GCP usage. Copy databases offline as final backup.|
+|Database security A GCP server is breached.|Data potentially lost or destroyed|2|5|Ensure passwords are secure, backup code where possible.|
+|Health problem: Injury|I suffer an injury due to an accident or physical attack.|Potentially become unable to complete the project|1|5|Avoid situations with risk of injury.|
+|Health problem: Disease|I catch a serious infection|Potentially become unable to complete the project|2|5|Ensure good hygene and cleanliness (Note: this table was written prior to the COVID-19 Epidemic)|
 
 Likelihood and Impact are rated on a scale from 1 to 5.
 
