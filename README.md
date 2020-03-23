@@ -1,120 +1,88 @@
-# README
----
-# Historical Battles & Generals Database
----
+## README
 
-## Table of Contents
 
-1. [Project Brief](#project-brief)
-    + [Proposal](#proposal)
-2. [Trello Board](#trello-board)
-    + [Start Point](#start-board)
-    + [Rolling Changes](#rolling-changes)
-    + [End Point](#end-point)
-3. [Risk Assessment](#risk-assessment)
-4. [Project Architecture](#project-architecture)
-    + [Entity Relationship Diagram](#entity-relationship-diagram)
-    + [Architecture Diagram](#architecture-diagram)
-    + [Issues Encountered](#issues-encountered)
-5. Design Considerations
-    + Front End
-    + Back End
-    + UI
-6. Testing
-    + Pytest Testing
-    + Postman Testing
-    + Final Report
-7. Deployment
-    + Toolset
-    + CI Server Implementation
-    + Branch and Merge Log
-8. Front End Implementation
-9. Improvements for Future Versions
-+ Authors
-+ Acknowledgements
 
-## Project Brief
-"Create a CRUD application with utilisation of supporting tools, methodologies and technologies that encapsulate all core modules covered during training."
+## Brief
 
-### Proposal
-A database of historical battles and generals. Users would be able to read, edit, delete and add to the database with generals and battles of their interest.
+As defined in the Fundamental Project Specification, the objective of this project was to:
+"Create a CRUD application with utilisation of supporting tools,
+methodologies and technologies that encapsulate all core modules covered during training."
+
+To break this down further:
+
+..* CRUD stands for Create, Read, Update, Delete. These are to be the primary interactions between my application and my database.
+
+..* The main supporting tools, methdodologies and technologies learned through my training are: Agile techniques, MySQL databases, Python programming, Flask applicaitons and Jenkins deployment.
+
+Further requirements included:
+
+..* A Trello Board featuring user stories, use cases and tasks to do.
+
+..* A relational database conatining at least two tables with a relationship between them.
+
+..* Test suites for the application, with automated tests for validation, and automatically generated reports.
+
+..* Code integrated within a feature-branch version control system, built through a CI server and deployed to a cloud-based VM.
+
+### My Proposal
+
+My website would be built around a database of historical battles and generals. Users would have the ability to perform the CRUD functions on tables of battles and generals, as well as assign battles to generals.
+
 ## Trello Board
----
 
-My Kanban board on Trello was used to track progress and manage the needed tasks.
+![Initial Board](https://github.com/Finn969/Project-SFIA-1/blob/master/Trello%20Board.png)
 
-### Start Point
+My Trello board was primarily based on the Agile concept of a kanban board, but simplified to reflect its usage by a single person. The far left "user stories" column contains the broad features that a user of my application would want to implement. The "backlog" is a formal list of broad tasks which are essential to making the user stories possible. From these broader tasks, more specific tasks that could be completed in a manageable time were identified and listed in the "to do" column. Each task would be added to the "doing" column while in progress, and finally moved to "done" when complete.
 
-![picture of the board](https://github.com/Finn969/Project-SFIA-1/blob/master/Trello%20Board.png)
+The 'milestones' document posted in the #important slack channel served as a good source of completable objectives.
 
-I followed the set of tasks laid out in the 'Milestones' posted on slack.
-### Rolling Changes
+The ordinary items in the User stories list are what is essential to the minimum viable product, whereas the items labelled "STRETCH" were considered as possible additions.
 
-
-### End Point
+![Final Board](https://github.com/Finn969/Project-SFIA-1/blob/master/Trello%20End.png)
 
 ## Risk Assessment
----
 
-|Risk No.|Risk|Description|Hazard|Likelihood|Impact|Solution|
+Risk|Description|Hazard|Likelihood|Impact|Solution|
 |---|---|---|---|---|---|---|
-|1.0.1|Running out of time.|Project left unfinished due to poor time management.|Project may be incomplete and marks lost as a result.|2|5|Manage time and plan objectives through use of Kanban board, ensure work is completed early.|
-|1.0.2|Data breach on workstation.|Work station is compromised.|Severe progress loss.|1|5|Change passwords on workstation, keep instances off when not in use.|
-|1.1.1|Depleted GCP credit.|An instance is left running, or an account breach enables the resources on the account to be drained.|Databases unable to be access|1|5|Continue monitoring GCP usage. Copy databases offline as final backup.|
-|1.1.2.1|Database security: SQL| A GCP server is breached.|Data potentially lost or destroyed|2|5|Ensure passwords are secure, backup code where possible.|
-|1.2.1|Health problem: Injury|I suffer an injury due to an accident or physical attack.|Potentially become unable to complete the project|1|5|Avoid situations with risk of injury.|
-|1.2.2|Health problem: Disease|I catch a serious infection|Potentially become unable to complete the project|2|5|Ensure good hygene and cleanliness|
+Running out of time.|Project left unfinished due to poor time management.|Project may be incomplete and marks lost as a result.|2|5|Manage time and plan objectives through use of Kanban board, ensure work is completed early.|
+Data breach on workstation.|Work station is compromised.|Severe progress loss.|1|5|Change passwords on workstation, keep instances off when not in use.|
+Depleted GCP credit.|An instance is left running, or an account breach enables the resources on the account to be drained.|Databases unable to be access|1|5|Continue monitoring GCP usage. Copy databases offline as final backup.|
+Database security A GCP server is breached.|Data potentially lost or destroyed|2|5|Ensure passwords are secure, backup code where possible.|
+Health problem: Injury|I suffer an injury due to an accident or physical attack.|Potentially become unable to complete the project|1|5|Avoid situations with risk of injury.|
+Health problem: Disease|I catch a serious infection|Potentially become unable to complete the project|2|5|Ensure good hygene and cleanliness (Note: this table was written prior to the COVID-19 Epidemic)|
 
+Likelihood and Impact are rated on a scale from 1 to 5.
 
-## Project Architecture
----
-I don't know what this will look like yet
-### Entity Relationships - Initial
-![picture of the ERD](https://github.com/Finn969/Project-SFIA-1/blob/master/ERD.png)
+## Entity Relationship Diagram
 
-### Entity Relationships - Final
-![picture of reformed ERD](https://github.com/Finn969/Project-SFIA-1/blob/master/ERDv2.png)
+My initial plan was built to be rather simple, conatining two main tables to contain battles and generals, with a minor third table which establishes relationships between them, given that pure many-to-many relationships are difficult to implement.
 
-### Overall Architecture
-I don't know what this will look like yet
-### Issues Encountered
-Placeholder text
+![Initial ERD](https://github.com/Finn969/Project-SFIA-1/blob/master/ERD.png)
 
-## Design Considerations
+I was able to fully complete this structure with some time left over. While my initially planned structure satisfied the MVP, I chose to attempt to satisfy my initally set stretch goals:
 
-### Front End
+![Final ERD](https://github.com/Finn969/Project-SFIA-1/blob/master/ERDv2.png)
 
-lorem ipsum
+My final structure aimed to show more complex relations: the winner and loser of each battle. This was achieved by inserting additional foreign keys into the battle table, and inserting a new minor table for armies.
 
-### Back End
+## Testing
 
-lorem ipsum
+Using Pytest, I was able to create testing functions in a testing.py file. This file implements both URL and database tests.
+URL tests pings each webpage generated by the application, testing that each page is properly generated without without causing a crash.
+Database testing runs CRUD functions on each table with placeholder values, testing that the tables can be properly modified, and that the relations between tables do not break.
 
-![Flow chart demonstrating process flow for the mvp page POST request handling stream]()
+This testing file is called by Jenkins during each build, and coverage is used to generate a report on how many of the tests are successful.
 
-Example Code:
+Insert a screenshot of Jenkins test report here.
 
-### UI
+## Deployment
 
-lorem ipsum
+Insert Diagram once completed here
 
-##Testing
+## Demonstration of Application
 
-###Pytest
-lorem ipsum
+## Retrospective
 
- URL TESTING
+## Authors
 
-DATABASE TESTING
-
-JENKINS REPORT
-coverage
-
-
-## Future Improvements
-
-#### Authors
-
-#### Acknowledgements
-
-
+Finn Macrae
