@@ -91,16 +91,44 @@ New code would be written on a local machine accessing a GCP compute engine via 
 ## Demonstration of Application
 
 ### Homepage - List of Generals
+![1](https://github.com/Finn969/Project-SFIA-1/blob/master/Screenshots/Homepage%201.png)
+
+![2](https://github.com/Finn969/Project-SFIA-1/blob/master/Screenshots/Homepage%202.png)
 
 ### List of Battles
+![1](https://github.com/Finn969/Project-SFIA-1/blob/master/Screenshots/Battlespage%201.png)
+
+![2](https://github.com/Finn969/Project-SFIA-1/blob/master/Screenshots/Battlespage%202.png)
+
+![3](https://github.com/Finn969/Project-SFIA-1/blob/master/Screenshots/Battlespage%203.png)
+
+![4](https://github.com/Finn969/Project-SFIA-1/blob/master/Screenshots/Battlespage%204.png)
 
 ### Table of Battle details
 
+![1](https://github.com/Finn969/Project-SFIA-1/blob/master/Screenshots/Battletable.png)
+
 ### Update pages
 
-### Assignments page (defunct)
+![1](https://github.com/Finn969/Project-SFIA-1/blob/master/Screenshots/updateb.png)
+
+![2](https://github.com/Finn969/Project-SFIA-1/blob/master/Screenshots/updateg.png)
+
+### Assignments page
+
+![1](https://github.com/Finn969/Project-SFIA-1/blob/master/Screenshots/assign.png)
 
 ## Retrospective
+
+While I am pleased with the outcome of the project, and satisfied with the skills I have learned, there are some areas I feel should be improved for my next project.
+
+..* While I did occasionally create additional branches for my git repo, I underutilised the branch model, and usually directly committed to the master branch.
+
+..* I did not update the Trello Board particularly frequently.
+
+..* My second structure for my database is, on reflection, overly complicated, and would function well without the armiestable.
+
+In summary, I am content with my progress here, but wise not to repeat my mistakes.
 
 ## Authors
 
