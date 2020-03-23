@@ -79,7 +79,7 @@ Database testing runs CRUD functions on each table with placeholder values, test
 This testing file is called by Jenkins during each build, and coverage is used to generate a report on how many of the tests are successful.
 
 ### Test Report
-![Test Report](https://github.com/Finn969/Project-SFIA-1/blob/master/ERD.png)
+![Test Report](https://github.com/Finn969/Project-SFIA-1/blob/master/Test_output.png)
 
 ## Deployment
 
